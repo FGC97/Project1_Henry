@@ -214,7 +214,7 @@ def get_director(director_name: str):
             return {"Error": f"Director '{director_name}' not found"}
 
         # Calculate the success of the director based on the average return
-        director_success = matching_directors['return'].mean()
+        director_success = matching_directors['revenue'].sum()
 
         # Create a list of dictionaries containing movie details
         director_movies = []
@@ -229,7 +229,7 @@ def get_director(director_name: str):
             director_movies.append(movie_info)
 
         # Return a dictionary with the director's success and movie details
-        return {"Director": director_name, "Success": director_success, "Movies": director_movies}
+        return {"Director": director_name, "Success (Revenue)": director_success, "Movies": director_movies}
 
     except ValueError as e:
         return str(e)
