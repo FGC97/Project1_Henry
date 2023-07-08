@@ -47,7 +47,7 @@ def peliculas_idioma(language: str):
         return {'TypeError': str(e)}
     except ValueError:
         # Return a dictionary with a NotFound message if no movies are found in the provided language
-        return {'NotFound': f'No movie released in the language "{language}" was found'}
+        return {'NotFound': f'No movie released in the language {language} was found'}
     
     
 # Endpoint 2
@@ -85,7 +85,7 @@ def peliculas_duracion(movie: str):
         else:
             return f"Invalid input: '{movie}', please provide a valid movie name as a string."
     except ValueError:
-        return {'NotFound': f'No movie released in the language "{movie}" was found'}
+        return {'NotFound': f'No movie released in the language {movie} was found'}
     
     
     
