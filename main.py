@@ -2,6 +2,7 @@
 
 import pandas as pd
 import numpy as np
+from fastapi import FastAPI
 import uvicorn
 from sklearn.metrics.pairwise        import cosine_similarity
 from sklearn.utils.extmath           import randomized_svd
@@ -16,19 +17,15 @@ app = FastAPI()
 #Presentation:
 #We create a simple endpoint as a presentation with our name.
 
-@app.get('/')
+@app.get("/")
 def presentation():
-    return 'Fredy_Gonzalez'
+    return {'Owner':'Fredy Gonzalez'}
 
 df_movies = pd.read_csv('dataset/df_movies.csv')
-print(df_movies.head())
-
-
-
 
 # Endpoint 1
 
-@app.get("/peliculas_idioma/{idioma}")
+@app.get("/peliculas_idioma/{language}")
 def peliculas_idioma(language: str):
     try:
         if not isinstance(language, str):
@@ -55,7 +52,7 @@ def peliculas_idioma(language: str):
     
 # Endpoint 2
 
-@app.get("/peliculas_duracion/{pelicula}")    
+@app.get("/peliculas_duracion/{movie}")    
 def peliculas_duracion(movie: str):
 
     try:
@@ -199,7 +196,7 @@ def productoras_exitosas(productora: str):
 
 # Endpoint 6
 
-@app.get("/get_director/{director}")
+@app.get("/get_director/{director_name}")
 def get_director(director_name: str):
     try:
         # Check if a string is provided as input
