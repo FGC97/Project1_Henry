@@ -7,11 +7,8 @@
            height=400px"
         src=src/henry.PNG
         alt="henry"><p>
-
 # <h1 align=center> **Henry Project Nº1 Data Science** </h1>
-
-# <h1 align=center>**`Machine Learning Operations (MLOps)`**</h1>
-
+# <h1 align=center>**Machine Learning Operations (MLOps)**</h1>
 <p align=center><img style="display: block; 
            margin-left: auto;
            margin-right: auto;
@@ -38,14 +35,68 @@ I was tasked with developing an API using the **FastAPI** framework to make the 
         alt="MLOpsProcess"><p>
 <figcaption>
 MLOps process.
-</figcaption>
+
+</figcaption>  
+
+
+# Dataset Description and Dictionary
+
+
+| Field | Description |
+|---|---|
+| **adult** | Indicates if the movie has an X rating, exclusively for adults. |
+| **belongs_to_collection** | A dictionary indicating which movie franchise or series the movie belongs to |
+| **budget** | The budget of the film, in dollars |
+| **genres** | A dictionary listing all the genres associated with the movie |
+| **homepage** | The official website of the film |
+| **id** | ID of the movie |
+| **imdb_id** | IMDB ID of the movie |
+| **original_language** | Original language in which the movie was recorded |
+| **original_title** | Original title of the movie |
+| **overview** | Small summary of the film |
+| **popularity** | Movie popularity score, assigned by TMDB (TheMoviesDataBase) |
+| **poster_path** | Movie poster URL |
+| **production_companies** | List of production companies associated with the movie |
+| **production_countries** | List of countries where the movie was produced |
+| **release_date** | Movie release date |
+| **revenue** | Collection of the film, in dollars |
+| **runtime** | Duration of the movie, in minutes |
+| **spoken_languages** | List of languages ​​spoken in the movie |
+| **status** | Status of the current movie (if it was announced, if it has already been released, etc.) |
+| **tagline** | Famous phrase associated with the movie |
+| **title** | Movie title |
+| **video** | Indicates whether or not there is a video trailer available in TMDB |
+| **vote_average** | Average review score for the movie |
+| **vote_count** | Number of votes received for the movie, in TMDB |
+
+# Process
+
+## ETL:
+
+[My Repository](https://github.com/your_username/your_repository)
+
+1. Some fields, like **`belongs_to_collection production_companies`**, and others are nested, that is they either have a dictionary or a list as values ​​in each row, we un-nest them to be able to do some of the API queries!
+2. The null values ​​of the revenue and budget`**, fields are filled with the number 0.
+3. We eliminate the null values ​​of the **`release date`**, field.
+4. We pass the date columns to the YYYY-mm-dd format, and we also create the **`release_year`**, column where we extract the year of the **`release date`**,.
+5. We create the column with the return on investment, called **`return with the fields`** **`revenue and budget`**, dividing these last two revenue / budget, when there is no data available to calculate it, it must take the value 0.
+6. We remove the columns that will not be used, **`video, imdb_id, adult, original_title, poster_path and homepage`**.
 
 
 
-1. **`presentation()`**: This function serves as a simple endpoint to present the owner's name.
-2. **`peliculas_idioma(language: str)`**: This function takes a language as input and returns the number of movies produced in that language.
-3. **`peliculas_duracion(movie: str)`**: This function takes a movie name as input and returns the duration and release year of the movie.
-4. **`franquicia(franquicia: str)`**: This function takes a franchise name as input and returns information about the franchise, such as the number of movies, total revenue, and average revenue.
-5. **`peliculas_pais(pais: str)`**: This function takes a country name as input and returns the number of movies produced in that country.
-6. **`productoras_exitosas(productora: str)`**: This function takes a production company name as input and returns information about the success of the production company, such as total revenue and the number of movies.
+
+## Functions
+
+1. **`presentation()`**: This function serves as a simple endpoint to present the owner's name.  
+
+2. **`peliculas_idioma(language: str)`**: This function takes a language as input and returns the number of movies produced in that language.  
+
+3. **`peliculas_duracion(movie: str)`**: This function takes a movie name as input and returns the duration and release year of the movie.  
+
+4. **`franquicia(franquicia: str)`**: This function takes a franchise name as input and returns information about the franchise, such as the number of movies, total revenue, and average revenue.  
+
+5. **`peliculas_pais(pais: str)`**: This function takes a country name as input and returns the number of movies produced in that country.  
+
+6. **`productoras_exitosas(productora: str)`**: This function takes a production company name as input and returns information about the success of the production company, such as total revenue and the number of movies.  
+
 7. **`get_director(director_name: str)`**: This function takes a director name as input and returns information about the director's success, total number of movies, and details of each movie.
