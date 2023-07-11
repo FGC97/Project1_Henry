@@ -1,47 +1,44 @@
-<img
-style="display: block; 
+
+
+<p align=center><img style="display: block; 
            margin-left: auto;
            margin-right: auto;
            width: 100%;
            height=400px"
-    src="src/henry.PNG" 
-    alt="MLOps">
+        src=src/henry.PNG
+        alt="henry"><p>
 
+# <h1 align=center> **Henry Project Nº1 Data Science** </h1>
 
-<h1 style="text-align: center;">Henry Project Nº1 Data Science</h1>
-<h1 style="text-align: center;">Machine Learning Operations (MLOps)</h1>
-<h1 style="text-align: center;">Fredy Gonzalez</h1>
+# <h1 align=center>**`Machine Learning Operations (MLOps)`**</h1>
 
-<img
-style="display: block; 
+<p align=center><img style="display: block; 
            margin-left: auto;
            margin-right: auto;
-           width: 500px;
+           width: 500px
            height=400px"
-    src="src/mlopsf.png" 
-    alt="MLOps">
+        src="src/mlopsf.png"
+        alt="MLOps"><p>
+
 
 
 # Introduction and context
 
-### Welcome to the first individual project of the labs stage of the Henry Bootcamp! In this occasion, I am going to perform as an MLOps Engineer.  
+Welcome to the first individual project of the labs stage of the Henry Bootcamp! In this occasion, I am going to perform as an MLOps Engineer.  
 
-### I was tasked with developing an API using the **FastAPI** framework to make the company's movie datasets available. I was asked to create a minimum viable product ***(MVP)*** that included 6 functions for the API endpoints and another function for a recommendation system using machine learning.
+I was tasked with developing an API using the **FastAPI** framework to make the company's movie datasets available. I was asked to create a minimum viable product ***(MVP)*** that included 6 functions for the API endpoints and another function for a recommendation system using machine learning.
 
-<img
-style="display: block; 
+
+<p align=center><img style="display: block; 
            margin-left: auto;
            margin-right: auto;
-           width: 900px;
+           width: 900px
            height=700px"
-    src="src/MLOps_Process.png" 
-    alt="MLOps">
+        src="src/MLOps_Process.png" 
+        alt="MLOpsProcess"><p>
 <figcaption>
 MLOps process.
 </figcaption>
-
-
-
 
 
 
