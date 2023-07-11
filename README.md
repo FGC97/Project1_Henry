@@ -41,6 +41,9 @@ MLOps process.
 
 # Dataset Description and Dictionary
 
+To download the original datasets, due to their weight, they can be found at the following link.
+[Original Datasets](https://drive.google.com/drive/folders/1O2LYofRceTX13vPotdjWudPCcaJ_7vQM?usp=sharing)
+
 
 | Field | Description |
 |---|---|
@@ -69,34 +72,63 @@ MLOps process.
 | **vote_average** | Average review score for the movie |
 | **vote_count** | Number of votes received for the movie, in TMDB |
 
-# Process
+# Processes
 
 ## ETL:
 
-[My Repository](https://github.com/your_username/your_repository)
+[ETL Process](https://github.com/FGC97/project1_Henry/blob/main/project1_ETL.ipynb)
 
-1. Some fields, like **`belongs_to_collection production_companies`**, and others are nested, that is they either have a dictionary or a list as values ​​in each row, we un-nest them to be able to do some of the API queries!
-2. The null values ​​of the revenue and budget`**, fields are filled with the number 0.
-3. We eliminate the null values ​​of the **`release date`**, field.
+***Unnest***: 
+1. Some fields, like **`belongs_to_collection production_companies`**, and others are nested, that is they either have a dictionary or a list as values ​​in each row, we un-nest them to be able to do some of the API queries.
+
+***Control of null values***:  
+
+2. The null values ​​of the **`revenue and budget`**, fields are filled with the number 0.
+3. We eliminate the null values ​​of the **`release date`**, field.  
+  
+***Correction in the format of dates***:  
+
 4. We pass the date columns to the YYYY-mm-dd format, and we also create the **`release_year`**, column where we extract the year of the **`release date`**,.
-5. We create the column with the return on investment, called **`return with the fields`** **`revenue and budget`**, dividing these last two revenue / budget, when there is no data available to calculate it, it must take the value 0.
+
+***Create the return column***  
+
+5. We create the column with the return on investment, called **`return with the fields`** **`revenue and budget`**, dividing these last two revenue / budget, when there is no data available to calculate it, it must take the value 0.  
+
+***Drop unused columns***  
+
 6. We remove the columns that will not be used, **`video, imdb_id, adult, original_title, poster_path and homepage`**.
 
 
+## Functions 
+[Functions Notebook](https://github.com/FGC97/project1_Henry/blob/main/project1_Functions.ipynb)
+
+1. **`peliculas_idioma(language: str)`**: This function takes a language as input and returns the number of movies produced in that language.  
+
+2. **`peliculas_duracion(movie: str)`**: This function takes a movie name as input and returns the duration and release year of the movie.  
+
+3. **`franquicia(franquicia: str)`**: This function takes a franchise name as input and returns information about the franchise, such as the number of movies, total revenue, and average revenue.  
+
+4. **`peliculas_pais(pais: str)`**: This function takes a country name as input and returns the number of movies produced in that country.  
+
+5. **`productoras_exitosas(productora: str)`**: This function takes a production company name as input and returns information about the success of the production company, such as total revenue and the number of movies.  
+
+6. **`get_director(director_name: str)`**: This function takes a director name as input and returns information about the director's success, total number of movies, and details of each movie.
 
 
-## Functions
+## EDA & Machine Learning
+[EDA & Machine Learning](https://github.com/FGC97/project1_Henry/blob/main/project1_EDA_MLOps.ipynb)
 
-1. **`presentation()`**: This function serves as a simple endpoint to present the owner's name.  
 
-2. **`peliculas_idioma(language: str)`**: This function takes a language as input and returns the number of movies produced in that language.  
+7. **`def recomendacion(title:str)`**: The recomendacion function takes a movie title as input and returns a dictionary containing recommendations for similar movies.
 
-3. **`peliculas_duracion(movie: str)`**: This function takes a movie name as input and returns the duration and release year of the movie.  
 
-4. **`franquicia(franquicia: str)`**: This function takes a franchise name as input and returns information about the franchise, such as the number of movies, total revenue, and average revenue.  
+## API Deployment
 
-5. **`peliculas_pais(pais: str)`**: This function takes a country name as input and returns the number of movies produced in that country.  
+The deployment of our FastAPI is done using **`Render`** a virtual environment. (https://render.com/)
 
-6. **`productoras_exitosas(productora: str)`**: This function takes a production company name as input and returns information about the success of the production company, such as total revenue and the number of movies.  
+Click to access my FastAPI application:
 
-7. **`get_director(director_name: str)`**: This function takes a director name as input and returns information about the director's success, total number of movies, and details of each movie.
+[API Deployment](https://github.com/FGC97/project1_Henry/blob/main/project1_EDA_MLOps.ipynb)
+
+
+

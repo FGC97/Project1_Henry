@@ -18,9 +18,9 @@ df_movies_ml = pd.read_csv('dataset/df_movies_ml.csv', sep = ',')
 #Presentation:
 #We create a simple endpoint as a presentation with our name.
 
-
 @app.get("/")
 def Presentation():
+    """Welcome to my first Henry project"""
     return {"Fredy González": "Welcome to my first Henry project. To explore the API documentation, please visit https://project1-henry.onrender.com/docs."}
 
 # Endpoint 1
