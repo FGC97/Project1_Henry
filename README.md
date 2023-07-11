@@ -7,8 +7,8 @@
            height=400px"
         src=src/henry.PNG
         alt="henry"><p>
-# <h1 align=center> **Henry Project Nº1 Data Science** </h1>
-# <h1 align=center>**Machine Learning Operations (MLOps)**</h1>
+<h1 align=center> <strong>Henry Project Nº1 Data Science</strong> </h1>
+<h1 align=center><strong>Machine Learning Operations (MLOps)</strong></h1>
 <p align=center><img style="display: block; 
            margin-left: auto;
            margin-right: auto;
