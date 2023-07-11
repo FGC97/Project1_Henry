@@ -21,7 +21,7 @@ df_movies_ml = pd.read_csv('dataset/df_movies_ml.csv', sep = ',')
 
 @app.get("/")
 async def root():
-    return {"message": "Welcome to my first Henry project. To explore the API documentation, please visit /docs."}
+    return {"Fredy González": "Welcome to my first Henry project. To explore the API documentation, please visit https://project1-henry.onrender.com/docs."}
 
 # Endpoint 1
 
