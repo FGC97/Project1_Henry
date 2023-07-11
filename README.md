@@ -19,7 +19,7 @@
 
 
 
-# Introduction and context
+# **Introduction and context**
 
 Welcome to the first individual project of the labs stage of the Henry Bootcamp! In this occasion, I am going to perform as an MLOps Engineer.  
 
@@ -73,9 +73,9 @@ To download the original datasets ***"movies_dataset.csv" & "credits.csv"***, du
 | **directors** | The name of the director(s) of each movie |
 | **actors** | The name of the actor(s) of each movie |
 
-# Processes
+# **Processes**
 
-## ETL:
+## ***ETL***:
 * ***To find out more about the development of the ETL process, there is the following link***  
 
 [ETL Process](https://github.com/FGC97/project1_Henry/blob/main/project1_ETL.ipynb)
@@ -101,7 +101,7 @@ To download the original datasets ***"movies_dataset.csv" & "credits.csv"***, du
 6. We remove the columns that will not be used, **`video, imdb_id, adult, original_title, poster_path and homepage`**.
 
 
-## Functions 
+## ***Functions*** 
 * ***For more information about the development of the different functions and a more detailed explanation of each one, please click the following link.***  
 
 [Functions Notebook](https://github.com/FGC97/project1_Henry/blob/main/project1_Functions.ipynb)
@@ -119,7 +119,7 @@ To download the original datasets ***"movies_dataset.csv" & "credits.csv"***, du
 6. **`get_director(director_name: str)`**: This function takes a director name as input and returns information about the director's success, total number of movies, and details of each movie.
 
 
-## Exploratory Data Analysis & Machine Learning
+## ***Exploratory Data Analysis & Machine Learning***
 * ***To inquire more about the development of the EDA process, there is the following link***  
 
 [EDA & Machine Learning](https://github.com/FGC97/project1_Henry/blob/main/project1_EDA_MLOps.ipynb)
@@ -132,12 +132,13 @@ To download the original datasets ***"movies_dataset.csv" & "credits.csv"***, du
 * Finally, the function returns a dictionary containing recommendations for each matching movie based on the input title.
 
 
-## API Deployment
+## ***API Deployment***
 
-The deployment of our FastAPI is done using **`Render`** a virtual environment. (https://render.com/)
+The deployment of our FastAPI is done using **`Render`** a virtual environment. 
+
+* To consume the API, use the 7 different endpoints to get information and make queries about movies. The descriptions in each of the functions will tell you how to enter the corresponding data.
 
 Click to access my FastAPI application:
-
 [API Deployment](https://project1-henry.onrender.com/docs#/)
 
 
@@ -151,3 +152,20 @@ Click to access my FastAPI application:
 <figcaption>
 MVP FastAPI Recomendation Sytem.
 </figcaption>  
+
+## ***Requirements*** 
+* Python
+* Scikit-Learn
+* Pandas
+* NumPy
+* Matplotlib
+* Seaborn
+* FastAPI
+* Render (https://render.com/)
+
+
+## ***Author***
+
+* Fredy Andrés González Coral
+* Mail: fredyandresgc@gmail.com
+* Linkedin: https://www.linkedin.com/in/fgc97/
