@@ -12,8 +12,8 @@
 <p align=center><img style="display: block; 
            margin-left: auto;
            margin-right: auto;
-           width: 500px
-           height=400px"
+           width: 400px
+           height=300px"
         src="src/mlopsf.png"
         alt="MLOps"><p>
 
@@ -76,6 +76,7 @@ To download the original datasets ("movies_dataset.csv" & "credits.csv"), due to
 # Processes
 
 ## ETL:
+* ***To find out more about the development of the ETL process, there is the following link***  
 
 [ETL Process](https://github.com/FGC97/project1_Henry/blob/main/project1_ETL.ipynb)
 
@@ -101,6 +102,8 @@ To download the original datasets ("movies_dataset.csv" & "credits.csv"), due to
 
 
 ## Functions 
+* ***For more information about the development of the different functions and a more detailed explanation of each one, please click the following link.***  
+
 [Functions Notebook](https://github.com/FGC97/project1_Henry/blob/main/project1_Functions.ipynb)
 
 1. **`peliculas_idioma(language: str)`**: This function takes a language as input and returns the number of movies produced in that language.  
@@ -116,15 +119,17 @@ To download the original datasets ("movies_dataset.csv" & "credits.csv"), due to
 6. **`get_director(director_name: str)`**: This function takes a director name as input and returns information about the director's success, total number of movies, and details of each movie.
 
 
-## EDA & Machine Learning
+## Exploratory Data Analysis & Machine Learning
+* ***To inquire more about the development of the EDA process, there is the following link***  
+
 [EDA & Machine Learning](https://github.com/FGC97/project1_Henry/blob/main/project1_EDA_MLOps.ipynb)
+
+7. **`def recomendacion(title:str)`**: The recomendacion function takes a movie title as input and returns a dictionary containing recommendations for similar movies.
 
 * The function first verifies if the input title is a string and normalizes it. 
 * It then checks if the title exists in the movie dataset and retrieves the matching movies. For each matching movie, the function filters movies with the same genres and calculates the TF-IDF similarity between the input movie and the filtered movies based on their title and overview. 
 * It selects the top 5 most similar movies and creates a dictionary of recommendations, including their genres and vote average. 
 * Finally, the function returns a dictionary containing recommendations for each matching movie based on the input title.
-
-7. **`def recomendacion(title:str)`**: The recomendacion function takes a movie title as input and returns a dictionary containing recommendations for similar movies.
 
 
 ## API Deployment
