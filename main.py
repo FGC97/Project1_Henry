@@ -5,13 +5,14 @@ import numpy as np
 from fastapi import FastAPI
 import uvicorn
 from sklearn.metrics.pairwise        import cosine_similarity
-from sklearn.utils.extmath           import randomized_svd
 from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise        import linear_kernel
+import ast
 
 
 app = FastAPI()
 
+df_movies = pd.read_csv('dataset/df_movies.csv', sep = ',')
+df_movies_ml = pd.read_csv('dataset/df_movies_ml.csv', sep = ',')
 
 
 #Presentation:
@@ -21,7 +22,6 @@ app = FastAPI()
 def presentation():
     return {'Owner':'Fredy Gonzalez'}
 
-df_movies = pd.read_csv('dataset/df_movies.csv')
 
 # Endpoint 1
 
@@ -239,4 +239,67 @@ def get_director(director_name: str):
 
 # Endpoint 7
 
-#@app.get("/recomendacion/{titulo}")
+@app.get("/recomendacion/{titulo}")
+def recomendacion(titulo: str):
+    # Verify if the title is a string
+    if not isinstance(titulo, str):
+        return {"Error": f"'{titulo}' is not a string"}
+
+    # Normalize the title
+    titulo = titulo.strip().title()
+
+    # Check if the title is present in the DataFrame
+    matching_movies = df_movies_ml[df_movies_ml['title'].str.title() == titulo]
+    if matching_movies.empty:
+        return {"Error": f"The movie {titulo} was not found"}
+
+    recommendations_dict = {}
+
+    # Iterate over the matching movies
+    for _, movie in matching_movies.iterrows():
+        movie_title = movie['title']
+        movie_anio = movie['release_year']
+        movie_id = movie['id']
+        movie_genre = ast.literal_eval(movie["genres"])
+
+        # Check if the movie has at least one genre
+        if len(movie_genre) == 0:
+            return {"Error": f"No recommendations found for the movie {titulo}"}
+
+        # Filter movies with the same genres as the current movie
+        filtered_movies = df_movies_ml[df_movies_ml['genres'].apply(lambda x: len(ast.literal_eval(x)) == len(movie_genre) and ast.literal_eval(x) == movie_genre)]
+
+        # Reset the index of the filtered DataFrame
+        filtered_movies = filtered_movies.reset_index(drop=True)
+
+        # Create a TF-IDF vectorizer for movie features (title and overview)
+        tfidf = TfidfVectorizer(stop_words='english')
+
+        # Combine the features (title and overview) into a single field
+        filtered_movies['combined_features'] = filtered_movies['title'] + ' ' + filtered_movies['overview'].fillna('')
+
+        # Calculate the TF-IDF matrix of the features
+        tfidf_matrix = tfidf.fit_transform(filtered_movies['combined_features'])
+
+        # Get the index corresponding to the movie ID of the input movie
+        movie_index = filtered_movies[filtered_movies['id'] == movie_id].index[0]
+
+        # Calculate the cosine similarity between the input movie and the filtered movies
+        similarities = cosine_similarity(tfidf_matrix[movie_index], tfidf_matrix).flatten()
+
+        # Get the indices of the top 5 most similar movies (excluding the input movie)
+        top_indices = similarities.argsort()[-6:-1][::-1]
+
+        recommendations = {}
+        # Create a dictionary of recommendations for the current movie
+        for idx in top_indices:
+            rec_movie_title = filtered_movies.iloc[idx]['title']
+            rec_movie_genres = filtered_movies.iloc[idx]['genres']
+            rec_movie_vote_average = filtered_movies.iloc[idx]['vote_average']
+            recommendations[rec_movie_title] = {'genres': rec_movie_genres, 'vote_average': rec_movie_vote_average}
+
+        # Add the recommendations for the current movie to the final recommendations dictionary
+        recommendations_dict[f"{movie_title}, year {movie_anio}"] = recommendations
+
+    # Return the final dictionary containing recommendations for each movie matching the input title
+    return recommendations_dict
