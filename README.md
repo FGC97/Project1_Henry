@@ -35,13 +35,12 @@ I was tasked with developing an API using the **FastAPI** framework to make the 
         alt="MLOpsProcess"><p>
 <figcaption>
 MLOps process.
-
 </figcaption>  
 
 
 # Dataset Description and Dictionary
 
-To download the original datasets, due to their weight, they can be found at the following link.
+To download the original datasets ("movies_dataset.csv" & "credits.csv"), due to their weight, they can be found at the following link.
 [Original Datasets](https://drive.google.com/drive/folders/1O2LYofRceTX13vPotdjWudPCcaJ_7vQM?usp=sharing)
 
 
@@ -71,6 +70,8 @@ To download the original datasets, due to their weight, they can be found at the
 | **video** | Indicates whether or not there is a video trailer available in TMDB |
 | **vote_average** | Average review score for the movie |
 | **vote_count** | Number of votes received for the movie, in TMDB |
+| **directors** | The name of the director(s) of each movie |
+| **actors** | The name of the actor(s) of each movie |
 
 # Processes
 
@@ -118,6 +119,10 @@ To download the original datasets, due to their weight, they can be found at the
 ## EDA & Machine Learning
 [EDA & Machine Learning](https://github.com/FGC97/project1_Henry/blob/main/project1_EDA_MLOps.ipynb)
 
+* The function first verifies if the input title is a string and normalizes it. 
+* It then checks if the title exists in the movie dataset and retrieves the matching movies. For each matching movie, the function filters movies with the same genres and calculates the TF-IDF similarity between the input movie and the filtered movies based on their title and overview. 
+* It selects the top 5 most similar movies and creates a dictionary of recommendations, including their genres and vote average. 
+* Finally, the function returns a dictionary containing recommendations for each matching movie based on the input title.
 
 7. **`def recomendacion(title:str)`**: The recomendacion function takes a movie title as input and returns a dictionary containing recommendations for similar movies.
 
@@ -128,7 +133,16 @@ The deployment of our FastAPI is done using **`Render`** a virtual environment. 
 
 Click to access my FastAPI application:
 
-[API Deployment](https://github.com/FGC97/project1_Henry/blob/main/project1_EDA_MLOps.ipynb)
+[API Deployment](https://project1-henry.onrender.com/docs#/)
 
 
-
+<p align=center><img style="display: block; 
+           margin-left: auto;
+           margin-right: auto;
+           width: 900px
+           height=700px"
+        src="src/API.PNG" 
+        alt="API"><p>
+<figcaption>
+MVP FastAPI Recomendation Sytem.
+</figcaption>  
